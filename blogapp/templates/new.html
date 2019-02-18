@@ -1,44 +1,20 @@
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-</head>
+{% extends 'base.html' %}
+
+{% block contents %}
 <body>
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ccccff">
-                <a class="navbar-brand" href="#">Blog   </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="{% url 'new' %}">Write</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="{% url 'portfolio' %}">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="{% url 'about' %}" tabindex="-1" aria-disabled="true">About</a>
-                    </li>
-                  </ul>
-                </div>
-              </nav>
+        
 <br>
 
-<form>
+
   <div class="container">
-  <div class="form-group" style="width:50%">
-    <label for="exampleFormControlInput1">제목</label>
-    <input type="next" class="form-control" id="exampleFormControlInput1" placeholder="제목을 입력하세요.">
+    <form method="POST">
+    {% csrf_token %}
+    <table>
+      {{form.as_p}}
+    </table>
+    <br>
+    <input class="btn btn-dark" type="submit" value="제출하기">
+    </form>
   </div>
-  <div class="form-group" style="width:80%">
-    <label for="exampleFormControlTextarea1">본문</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="내용을 입력하세요." rows="10"></textarea>
-  </div>
-  <input class="btn btn-dark" type="submit" value="제출하기">
-  </div>
-</form>
+</body>
+{% endblock %}
