@@ -3,6 +3,7 @@ from django.urls import path,include
 import blogapp.views
 import portfolio.views
 import accounts.views
+import wordapp.views
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -12,4 +13,6 @@ urlpatterns = [
     path('blog/',include('blogapp.urls')),
     path('portfolio/', portfolio.views.portfolio, name="portfolio"),
     path('accounts/',include('accounts.urls')),
+    path('wordapp/',include('wordapp.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
